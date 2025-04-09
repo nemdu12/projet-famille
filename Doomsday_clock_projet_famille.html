@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compte à Rebours</title>
+
+  <!-- Déclaration de la police Minecraft -->
+  <style>
+    @font-face {
+      font-family: 'MinecraftFont';
+      src: url('fonts/minecraftia.ttf') format('truetype');
+    }
+
+    body {
+      background-color: black;
+      color: red;
+      font-family: 'MinecraftFont', sans-serif; /* Application de la police Minecraft */
+      text-align: center;
+      padding-top: 100px;
+    }
+    #countdown {
+      font-size: 4em;
+      margin-bottom: 40px;
+    }
+    #message {
+      font-size: 1.5em;
+    }
+    img {
+      width: 80%;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <img src="projet_famille_logo.png" alt="Projet Famille">
+  <div id="countdown"></div>
+  <div id="message">Si tu ne nous donnes pas une photo du projet famille, t’en paieras les conséquences.</div>
+
+  <audio id="alarm" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    // Date cible : 29 mai à 00:00:00
+    const targetDate = new Date("2025-04-29T00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    const alarm = document.getElementById("alarm");
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = "C'EST L'HEURE !";
+        alarm.play();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
