@@ -14,7 +14,7 @@
 
     body {
       background-color: black;
-      color: red;
+      color: green;
       font-family: 'MinecraftFont', sans-serif; /* Application de la police Minecraft */
       text-align: center;
       padding-top: 100px;
@@ -34,35 +34,9 @@
   </style>
 </head>
 <body>
-  <img src="projet_famille_logo.png" alt="Projet Famille">
-  <div id="countdown"></div>
-  <div id="message">Si tu ne nous donnes pas une photo du projet famille, t’en paieras les conséquences.</div>
+  <img src="projet_famille_finis.png" alt="Projet Famille">
+  <div id="message">GG, tu as donné une photo du projet. L'horloge ne tourne plus et ne tournera plus.</div>
 
-  <audio id="alarm" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
-
-  <script>
-    // Date cible : 29 mai à 00:00:00
-    const targetDate = new Date("2025-04-19T00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-    const alarm = document.getElementById("alarm");
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        countdownEl.innerHTML = "C'EST L'HEURE !";
-        alarm.play();
-      }
-    }, 1000);
-  </script>
+ 
 </body>
 </html>
